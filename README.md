@@ -2,7 +2,7 @@
 
 ## :warning: Prerequisites
 
-* Must have `[git](https://git-scm.com/)` installed.
+* Must have [git](https://git-scm.com/) installed.
 
 * Must have repository cloned.
 
