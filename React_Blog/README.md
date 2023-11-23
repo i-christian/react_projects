@@ -16,24 +16,8 @@ npx tailwindcss init -p
 
 * [node](https://nodejs.org/en) - Required
 
-## :warning: Prerequisites
-
-* Must have `git` installed.
-
-* Must have repository cloned.
-
-```
-$ sudo apt-get install git
-```
-
-
 ## :arrow_down: Installing and Using
 
-Clone the repository into a new directory:
-
-```
-$ git clone "https://github.com/i-christian/React-Projects"
-```
 Install Dependancies 
 ```
 npm install
@@ -42,7 +26,9 @@ npm install
 
 To run the app
 ```
-npm run dev
+npx json-server -p 3500 -w data/db.json
+
+npm run dev 
 
 ```
 
