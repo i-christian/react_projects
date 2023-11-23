@@ -8,39 +8,38 @@ import About from './About';
 import {Route, Routes, useNavigate} from 'react-router-dom';
 import {format} from 'date-fns'
 import { useState, useEffect } from 'react';
+import api from './api/posts';
+
 
 const App = () => {
-    const [posts, setPosts] = useState([
-        {
-          id: 1,
-          title: "My First Post",
-          datetime: "November 20, 2023 11:17:36 AM",
-          body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
-        },
-        {
-          id: 2,
-          title: "My 2nd Post",
-          datetime: "November 20, 2023, 2021 11:17:36 AM",
-          body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
-        },
-        {
-          id: 3,
-          title: "My 3rd Post",
-          datetime: "November 20, 2023 11:17:36 AM",
-          body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
-        },
-        {
-          id: 4,
-          title: "My Fourth Post",
-          datetime: "November 20, 2023 11:17:36 AM",
-          body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
-        }
-      ])
+    const [posts, setPosts] = useState([])
     const [search, setSearch] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [postTitle, setPostTitle] = useState('');
     const [postBody, setPostBody] = useState('');
     const navigate = useNavigate();
+
+    useEffect(
+      () => {
+        const fetchPosts = async () => {
+          try {
+            const response = await api.get('/posts');
+            setPosts(response.data)
+          } catch (err){
+            if (err.response){
+              console.log(err.response.data);
+              console.log(err.response.status);
+              console.log(err.response.headers);
+            }else{
+              console.log(`Error:, $(err.message)`);
+            }
+          }
+        }
+
+        fetchPosts();
+      },
+      []
+    )
 
     useEffect(()=>{
         const filterResults = posts?.filter(post => (
