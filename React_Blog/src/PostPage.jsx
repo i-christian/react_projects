@@ -1,4 +1,4 @@
-import {useParams, Link} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom';
 
 const PostPage = ({ posts, handleDelete}) => {
     const { id } = useParams();
@@ -13,9 +13,16 @@ const PostPage = ({ posts, handleDelete}) => {
                         <p className="text-xl pt-4">{post.body}</p>
                         
                         <section className="flex gap-4">
+                            <Link to={`/edit/${post.id}`}>
+                                <button
+                                  className="bg-indigo-500/100 p-2 mt-1 rounded-xl hover:bg-blue-800"  
+                                >
+                                    Edit Post
+                                </button>
+                            </Link>
                             <button 
-                            onClick={() => handleDelete(post.id)}
-                            className="bg-indigo-500/100 p-2 mt-1 rounded-xl hover:bg-red-800"
+                                onClick={() => handleDelete(post.id)}
+                                className="bg-indigo-500/100 p-2 mt-1 rounded-xl hover:bg-red-800"
                              >
                                 Delete Post
                             </button>

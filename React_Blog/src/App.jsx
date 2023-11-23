@@ -9,6 +9,7 @@ import {Route, Routes, useNavigate} from 'react-router-dom';
 import {format} from 'date-fns'
 import { useState, useEffect } from 'react';
 import api from './api/posts';
+import EditPost from './EditPost';
 
 
 const App = () => {
@@ -110,6 +111,15 @@ const App = () => {
                     setPostTitle={setPostTitle}
                     postBody={postBody}
                     setPostBody={setPostBody}
+                    />} />
+
+                  <Route path="/edit/:id" element={<EditPost
+                    posts={posts}
+                    handleEdit={handleEdit}
+                    editTitle={editTitle}
+                    setEditTitle={setEditTitle}
+                    editBody={editBody}
+                    setEditBody={setEditBody}
                     />} />
 
                   <Route exact path='/post/:id' element={<PostPage posts={posts} handleDelete={handleDelete}/>} />
