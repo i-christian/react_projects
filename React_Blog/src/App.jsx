@@ -10,6 +10,7 @@ import {format} from 'date-fns'
 import { useState, useEffect } from 'react';
 import api from './api/posts';
 import EditPost from './EditPost';
+import useAxiosFetch from './hooks/useAxiosFetch';
 
 
 const App = () => {
@@ -22,27 +23,14 @@ const App = () => {
     const [editBody, setEditBody] = useState('');
     const navigate = useNavigate();
 
+    // use the custom hook to fetch data
+    const {data, fetchError, isLoading} = useAxiosFetch('http://localhost:3500/posts')
+
     useEffect(
       () => {
-        const fetchPosts = async () => {
-          try {
-            const response = await api.get('/posts');
-            setPosts(response.data)
-          } catch (err){
-            if (err.response){
-              console.log(err.response.data);
-              console.log(err.response.status);
-              console.log(err.response.headers);
-            }else{
-              console.log(`Error:, ${err.message}`);
-            }
-          }
-        }
-
-        fetchPosts();
-      },
-      []
-    )
+        setPosts(data);
+      }, [data]
+    );
 
     useEffect(()=>{
         const filterResults = posts?.filter(post => (
@@ -103,7 +91,11 @@ const App = () => {
             <Nav search={search} setSearch={setSearch}/>
              
             <Routes>
-                  <Route path="/" element={<Home posts={searchResults} />} />
+                  <Route exact path="/" element={<Home
+                    posts={searchResults}
+                    fetchError={fetchError}
+                    isLoading={isLoading} 
+                   />} />
 
                   <Route exact path="/post" element={<NewPost
                     handleSubmit={handleSubmit}
