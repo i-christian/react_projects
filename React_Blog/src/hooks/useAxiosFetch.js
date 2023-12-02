@@ -25,6 +25,8 @@ const useAxiosFetch = (dataUrl) => {
                     setFetchError(err.message);
                     setData([]);
                 }
+            } finally {
+                isMounted && setIsLoading(false);
             }
         }
 
@@ -33,7 +35,6 @@ const useAxiosFetch = (dataUrl) => {
 
         // fetch clean up function
         const cleanUp = () => {
-            console.log('clean up function');
             isMounted = false;
             source.cancel();
         }
