@@ -1,4 +1,9 @@
-const NewPost = ({handleSubmit, postTitle, setPostTitle, postBody, setPostBody}) => {
+import { useContext } from "react";
+import DataContext from "../context/DataContext";
+
+
+const NewPost = () => {
+    const {handleSubmit, postTitle, setPostTitle, postBody, setPostBody} = useContext(DataContext);
     return(
         <main className="grow w-full bg-slate-700 rounded-md p-4 text-xl">
             <h1 className="text-2xl text-center p-4"> New Post</h1>
