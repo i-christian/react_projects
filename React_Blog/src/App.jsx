@@ -1,15 +1,15 @@
-import Header from './Header';
-import Nav from './Nav';
-import Footer from './Footer';
-import Home from './Home';
-import NewPost from './NewPost';
-import PostPage from './PostPage.jsx';
-import About from './About';
+import Header from './components/Header';
+import Nav from './components/Nav';
+import Footer from './components/Footer';
+import Home from './components/Home';
+import NewPost from './components/NewPost';
+import PostPage from './components/PostPage';
+import About from './components/About';
 import {Route, Routes, useNavigate} from 'react-router-dom';
 import {format} from 'date-fns'
 import { useState, useEffect } from 'react';
 import api from './api/posts';
-import EditPost from './EditPost';
+import EditPost from './components/EditPost';
 import useAxiosFetch from './hooks/useAxiosFetch';
 
 
