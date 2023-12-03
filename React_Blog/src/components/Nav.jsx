@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import DataContext from '../context/DataContext';
 
-const Nav = ({ search, setSearch }) => {
+const Nav = () => {
+    const {search, setSearch} = useContext(DataContext);
+
     return(
         <nav className="m-auto rounded-3xl bg-slate-800 w-full mb-4 flex flex-col sm:flex-row sm:w-full">
             <form 
