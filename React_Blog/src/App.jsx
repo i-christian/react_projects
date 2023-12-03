@@ -12,23 +12,18 @@ import { Route, Routes } from 'react-router-dom';
 const App = () => {
     return(
         <main className="flex flex-col items-start p-8 w-screen sm:w-3/4 sm:m-auto h-screen">
-           <DataProvider>
-              <Header title="React JS Blog"/>
+            <Header title="React JS Blog"/>
+            <DataProvider>
               <Nav />
-              
               <Routes>
                     <Route exact path="/" element={<Home />} />
-
                     <Route exact path="/post" element={<NewPost/>} />
-
                     <Route path="/edit/:id" element={<EditPost/>} />
-
                     <Route exact path='/post/:id' element={<PostPage />} />
-                    
                     <Route exact path='/about' element={<About/>} />
-              </Routes>
+                </Routes>
+              </DataProvider>
               <Footer/>
-            </DataProvider>
         </main>
     )
 }
