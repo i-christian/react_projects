@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-const Register = () => {
+const Register = ():JSX.Element => {
     return (
         <section className="auth">
             <h1>Register</h1>
