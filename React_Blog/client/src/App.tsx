@@ -11,7 +11,7 @@ import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import Single from "./pages/Single"
 import Write from "./pages/Write"
-
+import { useState } from "react"
 
 const Layout = () => {
   return(
