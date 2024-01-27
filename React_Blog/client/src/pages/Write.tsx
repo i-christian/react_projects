@@ -1,12 +1,45 @@
-
+import { useState } from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill/snow/css';
 
 const Write = () => {
+  const [value, setValue] = useState<string>('');
   return (
-    <section className="write">
-      <div className="content">content</div>
+    <section className="add">
+      <div className="content">
+        <input type="text" placeholder="title" />
+        <div className="editorContainer">
+          <ReactQuill theme="snow" value={value} onChange={setValue} />
+        </div>
+      </div>
       <div className="menu">
-        <div className="item">i1</div>
-        <div className="item">i2</div>
+        <div className="item">
+          <h1>Publish</h1>
+          <span>
+            <b>Visibility: </b>Public
+          </span>
+          <input type='file' id='file' name=''/>
+          <label htmlFor='file'>Upload Image</label>
+          <div className='buttons'>
+            <button>Save as a draft</button>
+            <button>Update</button>
+          </div>
+        </div>
+        <div className="item">
+          <h1>Category</h1>
+          <input type='radio' name='cat' value="art" id="art" />
+          <label htmlFor='art'>Art</label>
+          <input type='radio' name='cat' value="science" id="science" />
+          <label htmlFor='science'>Science</label>
+          <input type='radio' name='cat' value="technology" id="technology" />
+          <label htmlFor='technology'>Technology</label>
+          <input type='radio' name='cat' value="cinema" id="cinema" />
+          <label htmlFor='cinema'>Cinema</label>
+          <input type='radio' name='cat' value="design" id="design" />
+          <label htmlFor='design'>Design</label>
+          <input type='radio' name='cat' value="food" id="food" />
+          <label htmlFor='food'>Food</label>
+        </div>
       </div>
     </section>
   )
