@@ -1,6 +1,10 @@
-import "../index.css";
+interface ButtonProps {
+  name: string;
+  isPressed: boolean;
+  setFilter: (name: string) => void;
+}
 
-const Button = ({ name, isPressed, setFilter, key }) => {
+const Button = ({ name, isPressed, setFilter }: ButtonProps) => {
   return (
     <button
       type="button"
