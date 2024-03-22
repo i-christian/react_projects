@@ -1,23 +1,26 @@
+import { useState } from "react";
 import AddTasks from "./AddTasks";
 import Navigation from "./Navigation";
-import { DATA } from "./data";
 import Tasks from "./Tasks";
+import { DATA, Task } from "./data";
 import "../index.css";
 import { nanoid } from "nanoid";
-import { useState } from "react";
 
-const Content = () => {
-  const [tasks, setTasks] = useState(DATA);
-  const [filter, setFilter] = useState("All");
+interface ContentProps {}
 
-  const addTask = (name) => {
+const Content = (props: ContentProps) => {
+  const [tasks, setTasks] = useState<Task[]>(DATA);
+  const [filter, setFilter] = useState<string>("All");
+
+  const addTask = (name: string) => {
     if (name === "") {
       return false;
     }
     const newTask = { id: `todo-${nanoid()}`, name, completed: false };
     setTasks([...tasks, newTask]);
   };
-  const toggleTaskCompleted = (id) => {
+
+  const toggleTaskCompleted = (id: string) => {
     const updatedTasks = tasks.map((task) => {
       if (id === task.id) {
         return { ...task, completed: !task.completed };
@@ -27,12 +30,12 @@ const Content = () => {
     setTasks(updatedTasks);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (id: string) => {
     const remainingTasks = tasks.filter((task) => id !== task.id);
     setTasks(remainingTasks);
   };
 
-  const handleEdit = (id, newName) => {
+  const handleEdit = (id: string, newName: string) => {
     const editedTaskList = tasks.map((task) => {
       if (id === task.id) {
         return { ...task, name: newName };
