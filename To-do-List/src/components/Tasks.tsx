@@ -1,6 +1,19 @@
-import "../index.css";
 import Todo from "./Todo";
-import { FILTER_MAP } from "./filterTasks";
+import { FILTER_MAP, FilterType } from "./filterTasks";
+
+interface Task {
+  id: string;
+  name: string;
+  completed: boolean;
+}
+
+interface TasksProps {
+  tasks: Task[];
+  filter: FilterType;
+  toggleTaskCompleted: (id: string) => void;
+  handleDelete: (id: string) => void;
+  handleEdit: (id: string, newName: string) => void;
+}
 
 const Tasks = ({
   tasks,
@@ -8,23 +21,23 @@ const Tasks = ({
   toggleTaskCompleted,
   handleDelete,
   handleEdit,
-}) => {
-  const taskList = tasks
-    ?.filter(FILTER_MAP[filter])
-    ?.map((task) => (
-      <Todo
-        id={task.id}
-        name={task.name}
-        completed={task.completed}
-        key={task.id}
-        toggleTaskCompleted={toggleTaskCompleted}
-        handleDelete={handleDelete}
-        handleEdit={handleEdit}
-      />
-    ));
+}: TasksProps) => {
+  const filteredTasks = tasks.filter(FILTER_MAP[filter]);
 
-  const tasksNoun = taskList.length !== 1 ? "tasks" : "task";
-  const headingText = `${taskList.length} ${tasksNoun} remaining`;
+  const taskList = filteredTasks.map((task) => (
+    <Todo
+      id={task.id}
+      name={task.name}
+      completed={task.completed}
+      key={task.id}
+      toggleTaskCompleted={toggleTaskCompleted}
+      handleDelete={handleDelete}
+      handleEdit={handleEdit}
+    />
+  ));
+
+  const tasksNoun = filteredTasks.length !== 1 ? "tasks" : "task";
+  const headingText = `${filteredTasks.length} ${tasksNoun} remaining`;
 
   return (
     <section>
