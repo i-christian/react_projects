@@ -1,14 +1,17 @@
-import "../index.css";
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from 'react';
 
-const AddTasks = ({ addTask }) => {
-  const [name, setName] = useState("");
+interface Props {
+  addTask: (taskName: string) => void;
+}
 
-  const handleChange = (e) => {
+const AddTasks = ({ addTask }: Props) => {
+  const [name, setName] = useState<string>("");
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     addTask(name);
     setName("");
