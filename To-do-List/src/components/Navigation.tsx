@@ -1,8 +1,12 @@
-import "../index.css";
 import Button from "./Button";
 import { FILTER_NAMES } from "./filterTasks";
 
-const Navigation = ({ filter, setFilter }) => {
+interface NavigationProps {
+  filter: string;
+  setFilter: (name: string) => void;
+}
+
+const Navigation = ({ filter, setFilter }: NavigationProps) => {
   const filterList = FILTER_NAMES.map((name) => (
     <Button
       key={name}
