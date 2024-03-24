@@ -5,13 +5,30 @@ import {
   where,
   orderBy,
   onSnapshot,
+  QuerySnapshot,
+  DocumentData,
+  DocumentSnapshot,
 } from "firebase/firestore";
 import { db } from "../config/firebase-config";
 import { useGetUserInfo } from "./useGetUserInfo";
 
+interface Transaction {
+  id: string;
+  description: string;
+  transactionAmount: number;
+  transactionType: string;
+  createdAt: any;
+}
+
+interface TransactionTotals {
+  balance: number;
+  income: number;
+  expenses: number;
+}
+
 export const useGetTransactions = () => {
-  const [transactions, setTransactions] = useState([]);
-  const [transactionTotals, setTransactionTotals] = useState({
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [transactionTotals, setTransactionTotals] = useState<TransactionTotals>({
     balance: 0.0,
     income: 0.0,
     expenses: 0.0,
@@ -38,16 +55,16 @@ export const useGetTransactions = () => {
       const queryTransactions = query(
         transactionCollectionRef,
         where("userID", "==", userID),
-        orderBy("createdAt"),
+        orderBy("createdAt")
       );
 
-      return onSnapshot(queryTransactions, (snapshot) => {
-        let docs = [];
+      return onSnapshot(queryTransactions, (snapshot: QuerySnapshot<DocumentData>) => {
+        let docs: Transaction[] = [];
         let totalIncome = 0;
         let totalExpense = 0;
 
-        snapshot.forEach((doc) => {
-          const data = doc.data();
+        snapshot.forEach((doc: DocumentSnapshot<DocumentData>) => {
+          const data = doc.data() as Transaction;
           const id = doc.id;
 
           docs.push({ ...data, id });

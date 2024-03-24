@@ -1,6 +1,13 @@
 import Cookies from "js-cookie";
 
-export const useGetUserInfo = () => {
+interface UserInfo {
+  name?: string;
+  profilePhoto?: string;
+  userID?: string;
+  isAuth?: boolean;
+}
+
+export const useGetUserInfo = (): UserInfo => {
   const authCookie = Cookies.get("auth");
   const { name, profilePhoto, userID, isAuth } = authCookie
     ? JSON.parse(authCookie)
