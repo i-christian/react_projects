@@ -1,5 +1,3 @@
-
-
 const Menu = () => {
   return(
     <section className="menu">
