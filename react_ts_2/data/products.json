@@ -1,0 +1,19 @@
+{
+    "products": [
+        {
+            "sku": "item001",
+            "name": "HeadPhones",
+            "price": 99.99
+        },
+        {
+            "sku": "item002",
+            "name": "Laptop",
+            "price": 1299.99
+        },
+        {
+            "sku": "item003",
+            "name": "Telephone",
+            "price": 899.99
+        }
+    ]
+}

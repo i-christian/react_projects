@@ -4,13 +4,12 @@
 
 * Must have [git](https://git-scm.com/) installed.
 
-* Must have repository cloned.
 
 ```
 $ sudo apt-get install git
 ```
 
-
+* Must have repository cloned.
 ## :arrow_down: Installing and Using
 
 Clone the repository into a new directory:
