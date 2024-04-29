@@ -2,64 +2,63 @@ import {
   createBrowserRouter,
   RouterProvider,
   Outlet,
-} from "react-router-dom"
-import Home from './pages/Home'
-import Register from "./pages/Register"
-import Login from "./pages/Login"
-import Navbar from "./components/Navbar"
-import Footer from "./components/Footer"
-import Single from "./pages/Single"
-import Write from "./pages/Write"
+} from "react-router-dom";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Write from "./pages/Write";
+import Home from "./pages/Home";
+import Single from "./pages/Single";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
 
 const Layout = () => {
-  return(
+  return (
     <>
-      <Navbar/>
-      <Outlet/>
-      <Footer/>
+      <Navbar />
+      <Outlet />
+      <Footer />
     </>
-  )
-}
-
+  );
+};
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout/>,
+    element: <Layout />,
     children: [
       {
-        path:"/",
-        element:<Home/>
+        path: "/",
+        element: <Home />,
       },
       {
-        path:"/post/:id",
-        element:<Single/>
+        path: "/post/:id",
+        element: <Single />,
       },
       {
-        path:"/write",
-        element:<Write/>
-      }
-    ]
+        path: "/write",
+        element: <Write />,
+      },
+    ],
   },
   {
     path: "/register",
-    element: <Register/>
+    element: <Register />,
   },
   {
     path: "/login",
-    element: <Login/>
+    element: <Login />,
   },
-])
+]);
 
-
-const App = () => {
+function App() {
   return (
-    <main className="app">
+    <div className="app">
       <div className="container">
-        <RouterProvider router={router}/>
+        <RouterProvider router={router} />
       </div>
-    </main>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

@@ -1,5 +1,5 @@
 import express from "express";
-import { db } from "../db.js";
+import { db } from "../db";
 import jwt from "jsonwebtoken";
 
 export const getPosts = (req: express.Request, res:express.Response) => {

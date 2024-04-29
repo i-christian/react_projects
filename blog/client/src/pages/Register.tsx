@@ -17,9 +17,9 @@ const Register = (): JSX.Element => {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const res = await axios.post("/auth/register", inputs); // Pass inputs to the post request
+            await axios.post("/auth/register", inputs); // Pass inputs to the post request
             navigate("/login")
-        } catch (err) {
+        } catch (err: any) {
             setErr(err.response.data); // Access response data from error object
         }
     };
