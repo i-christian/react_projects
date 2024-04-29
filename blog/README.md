@@ -6,6 +6,6 @@
 - Sass
 - React-router-dom
 ### Backend
-- NodeJS
+- NodeJS V20
 - ExpressJS
 - MySQL
