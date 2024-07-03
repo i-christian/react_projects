@@ -1,42 +1,58 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
-import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
-import { json } from "@remix-run/node";
+import styles from '~/styles/global.css';
+import type { LinksFunction, MetaFunction } from '@remix-run/node';
 import {
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "@remix-run/react";
+	Links,
+	Link,
+	LiveReload,
+	Meta,
+	Outlet,
+	Scripts,
+	ScrollRestoration,
+} from '@remix-run/react';
 
-import { getUser } from "~/session.server";
-import stylesheet from "~/tailwind.css";
+export const links: LinksFunction = () => {
+	return [{ rel: 'stylesheet', href: styles }];
+};
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: stylesheet },
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-];
-
-export const loader = async ({ request }: LoaderFunctionArgs) => {
-  return json({ user: await getUser(request) });
+export const meta: MetaFunction = () => {
+	return [
+		{ title: 'PostMind' },
+		{
+			name: 'description',
+			content: 'A cool post app built with Remix',
+		},
+	];
 };
 
 export default function App() {
-  return (
-    <html lang="en" className="h-full">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <Meta />
-        <Links />
-      </head>
-      <body className="h-full">
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<head>
+				<meta charSet="utf-8" />
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<Meta />
+				<Links />
+			</head>
+			<body>
+				<nav className="container-nav">
+					<div className="navbar">
+						<Link to="/" className="logo">
+							PostMind
+						</Link>
+						<ul className="nav">
+							<li>
+								<Link to="/posts">Posts</Link>
+							</li>
+						</ul>
+					</div>
+				</nav>
+				<div className="container">
+					<Outlet />
+				</div>
+				<ScrollRestoration />
+				<Scripts />
+				<LiveReload />
+			</body>
+		</html>
+	);
 }
