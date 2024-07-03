@@ -1,4 +1,3 @@
-import styles from '~/styles/global.css';
 import type { LinksFunction, MetaFunction } from '@remix-run/node';
 import {
 	Links,
@@ -9,6 +8,9 @@ import {
 	Scripts,
 	ScrollRestoration,
 } from '@remix-run/react';
+import banner from "./images/home.jpg";
+import styles from "./tailwind.css";
+
 
 export const links: LinksFunction = () => {
 	return [{ rel: 'stylesheet', href: styles }];
@@ -33,20 +35,26 @@ export default function App() {
 				<Meta />
 				<Links />
 			</head>
-			<body>
-				<nav className="container-nav">
-					<div className="navbar">
-						<Link to="/" className="logo">
+			<body className="bg-gradient-to-r from-sky-900 to-indigo-950 w-2/3 m-auto ">
+				<nav>
+					<div className="py-3 flex flex-row justify-between ml-auto">
+						<Link to="/" className="text-2xl">
 							PostMind
 						</Link>
 						<ul className="nav">
 							<li>
-								<Link to="/posts">Posts</Link>
+								<Link to="/posts" className="text-2xl">Posts</Link>
 							</li>
 						</ul>
 					</div>
 				</nav>
-				<div className="container">
+				<hr className="py-2" />
+				<img
+					src={banner}
+					alt='background image'
+					className="rounded-lg w-full h-96"
+				/>
+				<div className="pt-3">
 					<Outlet />
 				</div>
 				<ScrollRestoration />

@@ -12,6 +12,12 @@
       "DOM.Iterable",
       "ES2022"
     ],
+    "types": [
+      "@remix-run/node",
+      "vite/client"
+    ],
+    "skipLibCheck": true,
+    "module": "ESNext",
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
