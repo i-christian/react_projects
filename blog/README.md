@@ -1,20 +1,30 @@
-# Welcome to Remix!
-
-- [Remix Docs](https://remix.run/docs)
+# Simple Blog App
+A full stack blog app crafted with RemixJS and Prisma ORM, fueled by a PostgreSQL database
 
 ## Development
 
-From your terminal:
+### Install dependancies
+```
+   npm install
+```
+
+## database
+Using postgreSQL
+```
+   npx prisma generate
+```
+```
+   npx prisma migrate dev
+```
+
+### Running the app
 
 ```sh
 npm run dev
 ```
 
 This starts your app in development mode, rebuilding assets on file changes.
-## database
-```npx prisma generate
-   npx prisma migrate dev
-```
+
 ## Deployment
 
 First, build your app for production:
