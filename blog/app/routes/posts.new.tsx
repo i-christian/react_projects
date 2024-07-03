@@ -49,7 +49,7 @@ const NewPost = () => {
 					</p>
 
 
-					<button className="" type="submit">
+					<button className="bg-blue-500 w-fit mx-auto py-2 px-8 rounded-md hover:bg-blue-950 hover:text-white hover:ring-2" type="submit">
 						Add Post
 					</button>
 				</Form>

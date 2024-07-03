@@ -1,4 +1,3 @@
-
 import type { ActionFunction, LoaderFunction } from '@remix-run/node';
 import { redirect } from '@remix-run/node';
 
@@ -43,23 +42,23 @@ interface Post {
 const Postid = () => {
   const { post }: { post: Post } = useLoaderData();
   return (
-    <>
-      <div className="page-header">
+    <main className="flex flex-col gap-5">
+      <header className="text-2xl text-center flex flex-col-reverse">
         <h2>{post.title}</h2>
-        <Link to="/posts" className="btn btn-reverse">
+        <Link to="/posts" className="underline mr-2 px-5 mb-5 hover:no-underline hover:bg-blue-800 hover:text-white w-fit rounded-md">
           Back
         </Link>
-      </div>
+      </header>
 
-      <div className="page-content">{post.body}</div>
+      <div className="text-wrap bg-blue-200 p-5 rounded-md">{post.body}</div>
 
       <div className="page-footer">
         <Form method="POST">
           <input type="hidden" name="_method" value="delete" />
-          <button className="btn btn-delete">Delete</button>
+          <button className="rounded-md bg-red-500 px-8 py-3 hover:bg-red-950 hover:text-white">Delete</button>
         </Form>
       </div>
-    </>
+    </main>
   );
 };
 
