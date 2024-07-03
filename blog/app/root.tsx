@@ -35,17 +35,16 @@ export default function App() {
 				<Links />
 			</head>
 			<body className="bg-gradient-to-r from-sky-900 to-indigo-950 w-2/3 m-auto ">
-				<nav>
-					<div className="py-3 flex flex-row justify-between ml-auto">
-						<Link to="/" className="text-2xl">
-							PostMind
-						</Link>
-						<ul className="nav">
-							<li>
-								<Link to="/posts" className="text-2xl">Posts</Link>
-							</li>
-						</ul>
-					</div>
+				<nav className="py-3 flex flex-row justify-between mx-auto">
+					<Link to="/" className="text-2xl underline hover:bg-sky-700 hover:no-underline hover:text-white p-2 rounded-lg">
+						PostMind
+					</Link>
+					<ul className="p-2">
+						<li>
+							<Link to="/posts" className="text-2xl underline p-2 hover:bg-sky-700 hover:no-underline hover:text-white rounded-lg">
+								Posts</Link>
+						</li>
+					</ul>
 				</nav>
 				<hr className="py-2" />
 				<div className="pt-3">

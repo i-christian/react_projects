@@ -22,30 +22,39 @@ export const action: ActionFunction = async ({ request }) => {
 
 const NewPost = () => {
 	return (
-		<>
-			<div className="page-header">
+		<main className="flex flex-col content-center">
+			<section className="text-2xl flex flex-row-reverse justify-between mx-2 mb-5">
 				<h2>New Post</h2>
-				<Link to="/posts" className="btn btn-reverse">
+				<Link to="/posts" className="underline hover:no-underline hover:text-white hover:bg-sky-600 px-5 rounded-xl">
 					Back
 				</Link>
-			</div>
+			</section>
 
-			<div className="page-content">
-				<Form method="POST">
-					<div className="form-control">
-						<label htmlFor="title">Title</label>
-						<input type="text" name="title" id="title" />
-					</div>
-					<div className="form-control">
-						<label htmlFor="body">Post Body</label>
-						<textarea name="body" id="body" />
-					</div>
-					<button className="btn btn-block" type="submit">
+			<section>
+				<Form method="POST" className="rounded-3xl bg-teal-700 flex flex-col gap-5 p-5 mx-auto ">
+					<p className="text-2xl p-2 w-full flex flex-row ">
+						<label htmlFor="title" className="px-2">Title: </label>
+						<input type="text" name="title" id="title" className="rounded-xl border p-2 grow" />
+					</p>
+					<p className="text-2xl p-2 w-full flex flex-row ">
+
+						<label htmlFor="body" className="px-2">Body: </label>
+						<textarea
+							name="body"
+							id="body"
+							autoComplete="on"
+							placeholder="post..."
+							className="rounded-xl border p-2 h-48 grow"
+						/>
+					</p>
+
+
+					<button className="" type="submit">
 						Add Post
 					</button>
 				</Form>
-			</div>
-		</>
+			</section>
+		</main>
 	);
 };
 

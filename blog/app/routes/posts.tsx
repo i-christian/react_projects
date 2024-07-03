@@ -2,7 +2,7 @@ import { Outlet } from '@remix-run/react';
 
 const posts = () => {
 	return (
-		<section className="text-2xl bg-none">
+		<section className="flex flex-col">
 			<Outlet />
 		</section>
 	);

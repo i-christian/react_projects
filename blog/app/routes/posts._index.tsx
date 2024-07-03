@@ -26,18 +26,17 @@ const Posts = () => {
 
   return (
     <>
-      <div className="page-header">
-        <h1>Posts</h1>
-        <Link to="/posts/new" className="btn">
+      <div className="flex flex-row gap-1 justify-end">
+        <Link to="/posts/new" className="text-2xl underline hover:bg-sky-700 hover:no-underline hover:text-white p-2 rounded-lg">
           New Post
         </Link>
       </div>
 
-      <ul className="posts-list">
+      <ul className="text-xl flex flex-col gap-3 pt-10">
         {posts.map((post) => (
           <li key={post.id}>
             <Link to={post.id}>
-              <h3>{post.title}</h3>
+              <h3 className="hover:text-white">{post.title}</h3>
               {new Date(post.createdAt).toLocaleString()}
             </Link>
           </li>
