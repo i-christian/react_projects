@@ -8,7 +8,6 @@ import {
 	Scripts,
 	ScrollRestoration,
 } from '@remix-run/react';
-import banner from "./images/home.jpg";
 import styles from "./tailwind.css";
 
 
@@ -49,11 +48,6 @@ export default function App() {
 					</div>
 				</nav>
 				<hr className="py-2" />
-				<img
-					src={banner}
-					alt='background image'
-					className="rounded-lg w-full h-96"
-				/>
 				<div className="pt-3">
 					<Outlet />
 				</div>
