@@ -11,13 +11,13 @@ export const MainPage = ({ user }) => {
   const { data: tasks, isLoading, error } = useQuery(getTasks);
 
   return (
-    <div>
+    <div className="my-5 flex flex-col w-2/3 mx-auto">
       <NewTaskForm />
       {tasks && <TasksList tasks={tasks} />}
 
       {isLoading && 'Loading...'}
       {error && 'Error: ' + error}
-      <button onClick={logout}>Logout</button>
+      <button onClick={logout} className="bg-blue-500 hover:bg-blue-900 text-white max-w-fit p-2 rounded-md mt-5">Logout</button>
     </div>
   )
 }
@@ -74,8 +74,8 @@ const NewTaskForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input name="description" type="text" defaultValue="" />
-      <input type="submit" value="Create task" />
+      <input name="description" type="text" defaultValue="" className="rounded-md border border-black p-2 mr-2 mb-10" />
+      <input type="submit" value="Create task" className="text-xl bg-blue-500 hover:bg-blue-900 text-white rounded-lg p-2" />
     </form>
   )
 }
